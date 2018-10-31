@@ -29,11 +29,6 @@ public class JsonData implements Serializable {
 
 		this.count = count;
 	}
-	public JsonData(Integer code, Object data) {
-		this.code = code;
-		this.data = data;
-
-	}
 //	public JsonData(Integer code, Object data, String msg) {
 //		this.code = code;
 //		this.data = data;
@@ -68,9 +63,6 @@ public class JsonData implements Serializable {
 	// 成功，传入数据,及描述信息
 	public static JsonData buildSuccess(Long count,Object data) {
 		return new JsonData(0, count,data);
-	}
-	public static JsonData buildSuccess(Object data) {
-		return new JsonData(0, data);
 	}
 
 	// 成功，传入数据,及状态码
@@ -115,8 +107,6 @@ public class JsonData implements Serializable {
 	public void setCount(Long count) {
 		this.count = count;
 	}
-
-
-
+	
 
 }

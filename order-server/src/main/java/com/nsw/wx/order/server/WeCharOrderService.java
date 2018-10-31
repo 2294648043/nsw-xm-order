@@ -1,32 +1,36 @@
-package com.nsw.wx.order.mapper;
+package com.nsw.wx.order.server;
 
-
-
+import com.github.pagehelper.PageInfo;
 import com.nsw.wx.order.pojo.WeCharOrdeDetail;
 import com.nsw.wx.order.pojo.WeCharOrder;
-import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 
-public interface WeCharOrderMapper {
-    /**
-     * @return list
-     */
-    List<WeCharOrder> finaAll();
-
-    /**
-     *
-     * @param record
-     * @return int
-     */
-    int insert(WeCharOrder record);
-
+public interface WeCharOrderService {
     /**
      * 根据订单编号删除订单信息
      * @param orderNo
      * @return int
      */
     int deleteByPrimaryKey(String orderNo);
+    /**
+     * author Wu_kong
+     * @param page
+     * @param pageSize
+     * @return List
+     */
+    PageInfo<WeCharOrder> pageSelect(int page, int pageSize);
+    /**
+     * @return list
+     */
+    List<WeCharOrder> finaAll();
+
+    /**
+     * @param record
+     * @return
+     */
+    int insert(WeCharOrder record);
 
     /**
      * 通过id查询订单信息
@@ -43,10 +47,10 @@ public interface WeCharOrderMapper {
     int updateByPrimary(WeCharOrder weCharOrder);
 
     /**
-     * 根据用户id查询订单信息
+     * 根据用户id和发送来的订单状态请求查询信息
      * @param userid
+     * @param orderstate
      * @return
      */
-    List<WeCharOrder> orderdetailuserid(@Param("userid") int userid);
-
+    List<WeCharOrder> orderdetailuserid(int userid);
 }

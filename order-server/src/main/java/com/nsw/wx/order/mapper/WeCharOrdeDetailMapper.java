@@ -3,10 +3,9 @@ package com.nsw.wx.order.mapper;
 
 
 import com.nsw.wx.order.pojo.WeCharOrdeDetail;
-import jdk.nashorn.internal.runtime.options.Option;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface WeCharOrdeDetailMapper {
     /**
@@ -40,13 +39,11 @@ public interface WeCharOrdeDetailMapper {
     int updateByPrimaryOid(WeCharOrdeDetail order);
 
     /**
-     * 查询订单详情
-     * @param orderno
+     * 根据订单编号查询订单详情
+     * @param oid
      * @return
      */
-    List<WeCharOrdeDetail> findByOrderno(String orderno);
-
-
+    List<WeCharOrdeDetail> selectoid(List<String> oid);
 
 
 

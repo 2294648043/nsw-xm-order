@@ -83,10 +83,6 @@ public class SellerOrderController {
         int count = (int) orderService.cancel(orderId);
         return ResultVOUtil.success();
     }
-
-
-
-
 }
 
 

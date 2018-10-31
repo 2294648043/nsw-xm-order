@@ -1,6 +1,7 @@
 package com.nsw.wx.order.converter;
 
-import com.nsw.wx.order.dto.OrderDTO;
+import com.nsw.wx.order.com.nsw.wx.order.dto.OrderDTO;
+//import com.nsw.wx.order.dto.OrderDTO;
 import com.nsw.wx.order.pojo.WeCharOrder;
 import org.springframework.beans.BeanUtils;
 

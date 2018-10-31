@@ -3,16 +3,15 @@ package com.nsw.wx.order.enums;
 import lombok.Getter;
 
 /**
- * 张维维
- * 2018-10-20 16:18
+ * Created by 廖师兄
+ * 2017-12-10 16:18
  */
 @Getter
-public enum OrderStatusEnum implements CodeEnum {
+public enum OrderStatusEnum {
     NEW(0, "新订单"),
-    DFINISHED(1,"排队中"),
-    FINISHED(2, "完结"),
-    DCANCEL(3, "待取消"),
-    CANCEL(4, "取消"),
+    FINISHED(1, "完结"),
+    DCANCEL(2, "待取消"),
+    CANCEL(3, "已取消"),
     ;
     private Integer code;
 
