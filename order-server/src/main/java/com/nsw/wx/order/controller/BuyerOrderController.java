@@ -85,7 +85,7 @@ public class BuyerOrderController {
         return ResultVOUtil.success(orderDTOList,count);
     }
     //订单详情
-    @GetMapping("/detail")
+    @PostMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
                                      @RequestParam("orderId") String orderId) {
        return ResultVOUtil.success(buyerOrderService.findOne(openid, orderId));

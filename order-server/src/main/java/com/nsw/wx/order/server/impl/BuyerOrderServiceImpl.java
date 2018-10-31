@@ -13,21 +13,17 @@ import com.nsw.wx.order.mapper.WeCharOrderMapper;
 import com.nsw.wx.order.message.*;
 import com.nsw.wx.order.pojo.WeCharOrdeDetail;
 import com.nsw.wx.order.pojo.WeCharOrder;
-import com.nsw.wx.order.rabbitmq.MQConfig;
 import com.nsw.wx.order.redis.RedisLock;
 import com.nsw.wx.order.redis.RedisService;
 import com.nsw.wx.order.redis.WeChatProductOutputKey;
 import com.nsw.wx.order.server.BuyerOrderService;
 import com.nsw.wx.order.server.WebSocket;
-import com.nsw.wx.order.util.FastJsonConvertUtil;
-import com.nsw.wx.order.util.JsonUtil;
 import com.nsw.wx.order.util.KeyUtil;
-import common.DecreaseStockInput;
-import common.WeChatProductOutput;
+import com.nsw.wx.order.common.DecreaseStockInput;
+import com.nsw.wx.order.common.WeChatProductOutput;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -175,8 +171,8 @@ public class BuyerOrderServiceImpl implements BuyerOrderService {
     @Override
     public OrderDTO findOne(String buyeropenid, String orderId) {
         WeCharOrder weCharOrder = weCharOrderMapper.BuyerFinaAllByid(Integer.parseInt(orderId),buyeropenid);
-        if (weCharOrder ==null){
-            throw  new OrderException(ResultEnum.CART_EMPTY.ORDER_NOT_EXIST);
+        if (weCharOrder ==null || weCharOrder.getOrderstate()==OrderStatusEnum.CANCEL.getCode()){
+            throw  new OrderException(ResultEnum.ORDER_NOT_EXIST);
         }
         //查看订单详情
         List<WeCharOrdeDetail> weCharOrdeDetails = weCharOrdeDetailMapper.findByOrderno(weCharOrder.getOrderno());
