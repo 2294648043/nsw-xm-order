@@ -12,6 +12,10 @@ public enum ResultEnum {
     CART_EMPTY(2, "购物车为空")
     ;
 
+    public static void main(String[] args) {
+
+    }
+
     private Integer code;
 
     private String message;
