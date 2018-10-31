@@ -9,6 +9,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface WeCharOrderMapper {
+    public static void main(String[] args) {
+
+    }
     /**
      * @return list
      */
