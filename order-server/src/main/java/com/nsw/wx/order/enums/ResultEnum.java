@@ -23,6 +23,8 @@ public enum ResultEnum {
 
     ;
 
+    public static void main(String[] args) {
+        System.out.println("master");}
     private Integer code;
 
     private String message;
